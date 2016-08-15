@@ -1,1 +1,79 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>This the end...</title>
+<script>
+function initLoad() {
+	
+	var w = screen.width, h = screen.height;
+	
+	var img_api_server = "<img src='https://unsplash.it/g/1200/400/?random' alt=''>";
+	
+    var arrQuotations = [
+        "Ломать - не строить.",
+        "То, что вы строили годами, может быть разрушено в одночасье — всё равно стройте",
+        "Жестокость — это черта характера добрых людей, она возникает, когда об твою доброту начинают вытирать ноги.",
+        "В большинстве случаев конец — это начало",
+		
+    ];
+	
+  var audio = new Audio();
+  
+  var arrMusic = [
+        "https://psv4.vk.me/c4810/u22113507/audios/05d36096a021.mp3?extra=Tjyh0s3PAVfjztnz6tnA23P_vhh1wBq53fiGQmqKBUWQWHdudg9VVVZQyMlr1K5CIXi7tCgxt9ERutbIMgXdU9cHeMcu9T3LXNTuyEY-fBIedA8uZwoEwsCXhQAkJq4oXz85rby9B0e6",
+        "https://psv4.vk.me/c611418/u35667895/audios/f6315ef97662.mp3?extra=HL6H6p3DsUyPFUagVd60ayQgW8us5jsIm3N7e_VJg05D7YiRn4R6vw4yoYu4L6ye6j3t-lnsHJsVxlWDYgTTorHnAaGFI-zJrOB5W2yoG7qJQNoGiuPeUk0ZVUmvyI_OVbQgrnb2ccSK",
+        "https://cs7-3v4.vk-cdn.net/p3/0e93856536013d.mp3?extra=G-7MEMu8TNXdfgA8zbzGIE8z0Xt7YqRiy_DpkziBrAkmOukIADF7-SXPZ4BJTnaXQiG6doiCDvie4XSBkBqjF8nhhsA1KEKqlw6r7IQrUiKzSllFQUYY_4zCAYqZv5PJaXGJ2462pw",
+        "https://psv4.vk.me/c536314/u60918758/audios/8be502b83549.mp3?extra=ZXxE8Au2SHaEuAAEWdQqxzuxEEev189bwEmxipNB4ldGW_vBsG0hXYrGxXhI5-_ru_Ptmp2kYVmSToKlIYRLAWW445YM1vFh2bn7uY0F8Hkf7lWKibik6E-bpxQlWiO9WjiQqDKlCO0",
+        "https://psv4.vk.me/c536220/u227771675/audios/0383d664d469.mp3?extra=-fxLWkUgnT_Ek77deVokj-XDmhGnbMhcYcPKd8mJgCWypafay53VVM1mDGZqw2Tpcmr8ozDzmGH79MQg-bf2Os-Z6KIGK_kbnoeCKO0THswgIYi7q_207xIe4Q11vJRhspZeXA7BAIVc",
+        "https://cs7-5v4.vk-cdn.net/p5/e86ba1a642fcbf.mp3?extra=i6H37UQWh0Ngct0bbNRMWuIrVmrsB_GdS6Ld5b09rcvZdCgpykJYiCY6ER7XjxKSfvif27r3IJ0yHDx0xiwAVAQxIdHCBeQCMqmwJcP_W0_HKdhFYJ8GH5j0-J35PtUaZ0jhJMBZJ2mC",
+        "https://psv4.vk.me/c4880/u15293960/audios/2724f3316d8e.mp3?extra=boc0XJaWqYZBv7yMefKIz2weYugdIOGAnjXyD-JrtpLahJkVd5gP7mKAvrgS9VbAKNOeYGFZ_zRSvaRZN2Hdv-Sn63zp2u86-OYwt7c94RktzMRAmbAX7iWIxZVxkLfH5oC2i2-XBfQ",
+        "https://psv4.vk.me/c5986/u89478094/audios/6b235c6f5695.mp3?extra=GVqF-R1lL-pXw59KGssM0I-JqMK0uYtAfz4lYuZoUOm3EWApaLnkJiMMoV1RFkO3NcwHbDEZnITtu8AaW2aj4MR7gVgflm2e3E0PklBM-RXWZZEUJUYQ_Jy4lzYtj7vpok_mcYxjfFqitQ",
+        "https://psv4.vk.me/c4527/u2807124/audios/e90406be6062.mp3?extra=eL8bj0X-GPnzByB2fe9Hz5qw3CJdgOfJJhOUnXNpaLj9xypMqiyfo-Sc88wZyMDb9SBs8cHXvP50P_pVVNERUZWGQ-YThdRgkjjEVP20Ape3XSsipS5x_nr4UuclTaRnc_O1XUJCx4QK",
+        "https://psv4.vk.me/c4267/u101902/audios/5355e91247ab.mp3?extra=BkppM6s86uGu3qqU3JlIuCcTB_l-ymgYTHotmQWZlKtvy6pEswTUYMJjq6B1CX_SaDGJRJDsYatDoIvqbszy4kBBb9D04pjJPthOZ9O5aKI8I37cmP5VA93H3ZArNWo3KNQQ-SPLiIus",
+        "https://cs7-1v4.vk-cdn.net/p16/be6706f0b7d145.mp3?extra=YnMSL6BhrZdpUQ7dXhZUtI5XgC4a2GLbAMK4JXHv4kekUOdhLIG6BYsaq-_SCoPmMGHlEtXOq5UB8xNfXItUnJevnWAZ1gl_PLKIXa1PjTjDNoXNsPp3G7Bq32bD681bnC8cXii20ps",
+		"https://cs7-5v4.vk-cdn.net/p22/acf3632d5b5f2a.mp3?extra=W0H-1LqhzsBYLBu_fV4EZcAiwFK5Afy_xsuWWVGMsa0pa3FgcJ5C8_cLJisd0NNn6UOos7vY-pTGrCTkktuhIQ_QPU8ztU5YZPPyp0C5iDOYQ8b8pbOMbL_zIRIXwbs5bnj2aVB4X-wy",
+		"https://psv4.vk.me/c4646/u21250268/audios/b8baca2ab597.mp3?extra=KbFGKFjeSEQ8VftsgPiH8xoLOWJNBCZtOXnU5O6F78eRjiKv4tHyqCWLs6HB2sA_uVUcMAn3irFOkx1SGLD8yn5Gon0QYmGRcByK9iIgWvDeTjoOJR-eUMuiW3ZRPc-F26xuODFqoDy6",
+		"https://psv4.vk.me/c4975/u134354556/audios/ed097f4c34fe.mp3?extra=7EAkT0t4PdyEStW9d-T-OOX9FP988zItI1ITyQUGLYbjFUb-pY5lGubd2WzFha9IYpLIGOxFBgmv6DQFZHYKjfoiGi2Gc8v42b-71WS5cbZLSNwLf4Y7C65LKpN1YfvWe8pT5HwLcqI"
+  ];
+  
+  var randMusic = arrMusic[Math.floor(Math.random()*(arrMusic.length))];
+  var randQuotations = arrQuotations[Math.floor(Math.random()*(arrQuotations.length))];
+  var getElement = document.getElementById("quotations");
+  var getElementImg = document.getElementById("img");
+  getElement.innerHTML = randQuotations;
+  getElementImg.innerHTML = img_api_server;
+  audio.src = randMusic;
+  audio.autoplay = true;
+}
+</script>
+</head>
 
+
+<body onload="initLoad()">
+	
+	  <style type="text/css">
+   #footer {
+    position: fixed;
+    left: 0; bottom: 0;
+    color: #fff; 
+    width: 100%; 
+   }
+   #footer div {
+    padding: 10px;
+    background: #3f3f3f;
+   }
+  </style>
+  
+<center>
+	<h1>Проект заморожен</h1><b>проект отключен до лучших времён.</b><br>Которые, впрочем, вряд ли наступят (для этого проекта)...
+	
+	<h3>Цитата: <div id="quotations"></div></h3>
+<div id="img"></div>
+</center>
+  <div id="footer">
+   <div>
+   <center>RIP ADT-Team.com &copy; 05.12-13 - 15.08.16 | <a href="https://github.com/ADT-Team">GitHub</a>  | <a href="https://vk.com/adt_68">VK</a>  </center> 
+   </div>
+</body>
+</html>
